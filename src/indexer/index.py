@@ -7,7 +7,6 @@ def milvus_client():
     try:
         milvus = Milvus()
         status = milvus.connect(MILVUS_HOST, MILVUS_PORT)
-        print("client_count:",status)
         return milvus
     except Exception as e:
         log.error(e)

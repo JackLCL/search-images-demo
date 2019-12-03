@@ -14,7 +14,7 @@ def do_delete(table_name):
         # vectors, names = feature_extract(database_path, VGGNet())
         index_client = milvus_client()
         status = delete_table(index_client, table_name=table_name)
-        return statuss
+        return status
     except Exception as e:
         logging.error(e)
         return "Error with {}".format(e)

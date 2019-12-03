@@ -74,6 +74,7 @@ def do_delete_api():
         add_argument('Table', type=str). \
         parse_args()
     table_name = args['Table']
+    print("delete table.")
     status = do_delete(table_name)
     return status
 
@@ -86,7 +87,6 @@ def do_count_api():
     table_name = args['Table']
     print("get rows:",table_name)
     rows = do_count(table_name)
-    print("ending:",rows)
     return "{}".format(rows)
 
 
