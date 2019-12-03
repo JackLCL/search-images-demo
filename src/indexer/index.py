@@ -64,5 +64,5 @@ def has_table(client, table_name):
 
 def count_table(client, table_name):
     status, num = client.count_table(table_name=table_name)
-    print(status)
+    print(status, num)
     return num
