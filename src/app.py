@@ -86,7 +86,7 @@ def do_count_api():
     table_name = args['Table']
     print("get rows:",table_name)
     rows = do_count(table_name)
-    return rows
+    return "{}".format(rows)
 
 
 @app.route('/api/v1/process')
