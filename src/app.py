@@ -7,6 +7,8 @@ from common.const import input_shape
 from common.const import default_cache_dir
 from service.train import do_train
 from service.search import do_search
+from service.count import do_count
+from service.delete import do_delete
 from service.theardpool import thread_runner
 from preprocessor.vggnet import vgg_extract_feat
 from indexer.index import milvus_client, create_table, insert_vectors, delete_table, search_vectors, create_index
