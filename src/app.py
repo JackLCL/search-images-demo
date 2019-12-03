@@ -98,10 +98,12 @@ def do_search_api():
         filename = secure_filename(file.filename)
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(file_path)
-        res = do_search(table_name, file_path, top_k, model, graph, sess)
-        if isinstance(res, str):
-            return res
-        res = [request.url_root +"data/" + x for x in res]
+        res_id,res_distance = do_search(table_name, file_path, top_k, model, graph, sess)
+        if isinstance(res_id, str):
+            return res_id
+        res_img = [request.url_root +"data/" + x for x in res_id]
+        res = dict(zip(res_img,res_distance))
+        res = sorted(res.items(),key=lambda item:item[1])
         return jsonify(res), 200
     return "not found", 400
 
