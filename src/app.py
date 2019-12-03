@@ -64,7 +64,9 @@ def do_train_api():
     file_path = args['File']
     try:
         thread_runner(1, do_train, table_name, file_path)
-        shutil.copytree(file_path+'/', DATA_PATH+'/')
+        filenames = os.listdir(file_path)
+        for filename in filenames:
+            shutil.copy(file_path + '/' + filename, DATA_PATH)
         return "Start"
     except Exception as e:
         return "Error with {}".format(e)
