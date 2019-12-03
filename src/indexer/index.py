@@ -52,3 +52,8 @@ def delete_table(client, table_name):
 def search_vectors(client, table_name, vectors, top_k):
     status, res = client.search_vectors(table_name=table_name, query_records=vectors, top_k=top_k, nprobe=16)
     return status, res
+
+
+def has_table(client, table_name):
+    status = client.has_table(table_name='test01')
+    return status

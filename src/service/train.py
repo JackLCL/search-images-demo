@@ -16,9 +16,10 @@ def do_train(table_name, database_path):
     try:
         vectors, names = feature_extract(database_path, VGGNet())
         index_client = milvus_client()
-        delete_table(index_client, table_name=table_name)
-        time.sleep(1)
-        create_table(index_client, table_name=table_name)
+        # delete_table(index_client, table_name=table_name)
+        # time.sleep(1)
+        if not has_table(milvus_client, table_name):
+            create_table(index_client, table_name=table_name)
         status, ids = insert_vectors(index_client, table_name, vectors)
         create_index(index_client, table_name)
         for i in range(len(names)):
