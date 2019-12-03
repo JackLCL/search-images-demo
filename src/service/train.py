@@ -2,14 +2,14 @@ import logging
 import time
 from common.config import DEFAULT_TABLE
 from common.const import default_cache_dir
-from common.config import DATA_PATH as database_path
+# from common.config import DATA_PATH as database_path
 from encoder.encode import feature_extract
 from preprocessor.vggnet import VGGNet
 from diskcache import Cache
 from indexer.index import milvus_client, create_table, insert_vectors, delete_table, search_vectors, create_index
 
 
-def do_train(table_name):
+def do_train(table_name, database_path):
     if not table_name:
         table_name = DEFAULT_TABLE
     cache = Cache(default_cache_dir)

@@ -57,8 +57,9 @@ def do_train_api():
         add_argument('Table', type=str). \
         parse_args()
     table_name = args['Table']
+    file_path = args['File']
     try:
-        thread_runner(1, do_train, table_name)
+        thread_runner(1, do_train, table_name, file_path)
         return "Start"
     except Exception as e:
         return "Error with {}".format(e)
