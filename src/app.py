@@ -85,7 +85,7 @@ def do_count_api():
         add_argument('Table', type=str). \
         parse_args()
     table_name = args['Table']
-    print("get rows:",table_name)
+    print("get table rows:",table_name)
     rows = do_count(table_name)
     return "{}".format(rows)
 
