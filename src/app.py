@@ -66,23 +66,23 @@ def do_train_api():
         return "Error with {}".format(e)
 
 
-@app.route('/api/v1/train', methods=['POST'])
+@app.route('/api/v1/delete', methods=['POST'])
 def do_delete_api():
     args = reqparse.RequestParser(). \
         add_argument('Table', type=str). \
         parse_args()
     table_name = args['Table']
-    status = d0_delete(table_name)
+    status = do_delete(table_name)
     return status
 
 
-@app.route('/api/v1/train', methods=['POST'])
+@app.route('/api/v1/count', methods=['POST'])
 def do_count_api():
     args = reqparse.RequestParser(). \
         add_argument('Table', type=str). \
         parse_args()
     table_name = args['Table']
-    rows = do_delete(table_name)
+    rows = do_count(table_name)
     return rows
 
 
