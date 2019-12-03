@@ -20,7 +20,8 @@ def do_train(table_name, database_path):
         # delete_table(index_client, table_name=table_name)
         # time.sleep(1)
         # print("has_table",has_table(index_client, table_name))
-        if not has_table(index_client, table_name):
+        status, ok = has_table(index_client, table_name)
+        if not ok:
             print("create table.")
             create_table(index_client, table_name=table_name)
         status, ids = insert_vectors(index_client, table_name, vectors)
