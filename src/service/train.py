@@ -29,3 +29,25 @@ def do_train(table_name, database_path):
     except Exception as e:
         logging.error(e)
         return "Error with {}".format(e)
+
+
+def do_delete(table_name):
+    try:
+        vectors, names = feature_extract(database_path, VGGNet())
+        index_client = milvus_client()
+        status = delete_table(index_client, table_name=table_name)
+        return statuss
+    except Exception as e:
+        logging.error(e)
+        return "Error with {}".format(e)
+
+
+def do_count(table_name):
+    try:
+        vectors, names = feature_extract(database_path, VGGNet())
+        index_client = milvus_client()
+        num = get_table_row_count(index_client, table_name=table_name)
+        return num
+    except Exception as e:
+        logging.error(e)
+        return "Error with {}".format(e)

@@ -66,6 +66,27 @@ def do_train_api():
         return "Error with {}".format(e)
 
 
+@app.route('/api/v1/train', methods=['POST'])
+def do_delete_api():
+    args = reqparse.RequestParser(). \
+        add_argument('Table', type=str). \
+        parse_args()
+    table_name = args['Table']
+    status = d0_delete(table_name)
+    return status
+
+
+@app.route('/api/v1/train', methods=['POST'])
+def do_count_api():
+    args = reqparse.RequestParser(). \
+        add_argument('Table', type=str). \
+        parse_args()
+    table_name = args['Table']
+    rows = do_delete(table_name)
+    return rows
+
+
+
 @app.route('/api/v1/process')
 def thread_status_api():
     cache = Cache(default_cache_dir)
@@ -106,6 +127,7 @@ def do_search_api():
         res = [request.url_root +"data/" + x for x in res]
         return jsonify(res), 200
     return "not found", 400
+
 
 
 if __name__ == "__main__":
