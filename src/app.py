@@ -26,6 +26,7 @@ import tensorflow as tf
 from tensorflow.python.keras.backend import set_session
 from tensorflow.python.keras.models import load_model
 from diskcache import Cache
+import shutil
 
 config = tf.ConfigProto()
 config.gpu_options.allow_growth = True
@@ -63,6 +64,7 @@ def do_train_api():
     file_path = args['File']
     try:
         thread_runner(1, do_train, table_name, file_path)
+        shutil.copytree(file_path+'/*', DATA_PATH)
         return "Start"
     except Exception as e:
         return "Error with {}".format(e)
