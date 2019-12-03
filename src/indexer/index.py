@@ -57,7 +57,7 @@ def search_vectors(client, table_name, vectors, top_k):
 
 
 def has_table(client, table_name):
-    print("has table:")
+    print("has table:",table_name)
     status = client.has_table(table_name=table_name)
     print("has table:",status)
     return status
