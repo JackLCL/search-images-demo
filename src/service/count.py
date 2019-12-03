@@ -10,6 +10,7 @@ from indexer.index import milvus_client, create_table, insert_vectors, delete_ta
 
 
 def do_count(table_name):
+    print("trying....")
     try:
         # vectors, names = feature_extract(database_path, VGGNet())
         index_client = milvus_client()
