@@ -76,7 +76,7 @@ def do_delete_api():
     table_name = args['Table']
     print("delete table.")
     status = do_delete(table_name)
-    return status
+    return "{}".format(status)
 
 
 @app.route('/api/v1/count', methods=['POST'])
@@ -124,7 +124,7 @@ def do_search_api():
         filename = secure_filename(file.filename)
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(file_path)
-        
+
         res = do_search(table_name, file_path, top_k, model, graph, sess)
         if isinstance(res, str):
             return res
