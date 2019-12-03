@@ -47,6 +47,7 @@ def create_index(client, table_name):
 
 def delete_table(client, table_name):
     status = client.delete_table(table_name=table_name)
+    print(status)
     return status
 
 
@@ -57,9 +58,11 @@ def search_vectors(client, table_name, vectors, top_k):
 
 def has_table(client, table_name):
     status = client.has_table(table_name=table_name)
+    print(status)
     return status
 
 
 def count_table(client, table_name):
     status, num = client.count_table(table_name=table_name)
+    print(status)
     return num
