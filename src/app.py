@@ -55,13 +55,16 @@ def load_model():
 def do_train_api():
     args = reqparse.RequestParser(). \
         add_argument('Table', type=str). \
+        add_argument('File', type=str). \
         parse_args()
     table_name = args['Table']
     file_path = args['File']
+    print(table_name,file_path)
     try:
         thread_runner(1, do_train, table_name, file_path)
         return "Start"
     except Exception as e:
+        print('Error')
         return "Error with {}".format(e)
 
 
