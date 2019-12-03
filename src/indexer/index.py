@@ -56,10 +56,10 @@ def search_vectors(client, table_name, vectors, top_k):
 
 
 def has_table(client, table_name):
-    status = client.has_table(table_name='test01')
+    status = client.has_table(table_name=table_name)
     return status
 
 
-def get_table_row_count(client, table_name):
-    status, num = client.get_table_row_count(table_name='test01')
+def count_table(client, table_name):
+    status, num = client.count_table(table_name=table_name)
     return num

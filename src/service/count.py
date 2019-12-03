@@ -14,7 +14,7 @@ def do_count(table_name):
     try:
         # vectors, names = feature_extract(database_path, VGGNet())
         index_client = milvus_client()
-        num = get_table_row_count(index_client, table_name=table_name)
+        num = count_table(index_client, table_name=table_name)
         return num
     except Exception as e:
         logging.error(e)

@@ -89,7 +89,6 @@ def do_count_api():
     return rows
 
 
-
 @app.route('/api/v1/process')
 def thread_status_api():
     cache = Cache(default_cache_dir)
