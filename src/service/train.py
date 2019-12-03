@@ -22,7 +22,7 @@ def do_train(table_name, database_path):
         print("has_table",has_table(milvus_client, table_name))
         if not has_table(milvus_client, table_name):
             print("create table.")
-            create_table(index_client, table_name=table_name)
+        create_table(index_client, table_name=table_name)
         status, ids = insert_vectors(index_client, table_name, vectors)
         create_index(index_client, table_name)
         for i in range(len(names)):

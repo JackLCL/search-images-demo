@@ -24,4 +24,5 @@ def feature_extract(database_path, model):
         cache['total'] = total
         print ("extracting feature from image No. %d , %d images in total" %(current, total))
 #    feats = np.array(feats)
+    print("end with feature")
     return feats, names
