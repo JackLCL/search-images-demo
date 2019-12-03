@@ -11,7 +11,7 @@ from indexer.index import milvus_client, create_table, insert_vectors, delete_ta
 
 def do_delete(table_name):
     try:
-        vectors, names = feature_extract(database_path, VGGNet())
+        # vectors, names = feature_extract(database_path, VGGNet())
         index_client = milvus_client()
         status = delete_table(index_client, table_name=table_name)
         return statuss
