@@ -18,6 +18,7 @@ def do_train(table_name, database_path):
         index_client = milvus_client()
         # delete_table(index_client, table_name=table_name)
         # time.sleep(1)
+        print(has_table(milvus_client, table_name))
         if not has_table(milvus_client, table_name):
             print("create table.")
             create_table(index_client, table_name=table_name)
@@ -26,6 +27,7 @@ def do_train(table_name, database_path):
         for i in range(len(names)):
             # cache[names[i]] = ids[i]
             cache[ids[i]] = names[i]
+        print("Train finished")
         return "Train finished"
     except Exception as e:
         logging.error(e)
