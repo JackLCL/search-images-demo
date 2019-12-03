@@ -10,8 +10,8 @@ from indexer.index import milvus_client, create_table, insert_vectors, delete_ta
 
 
 def do_train(table_name, database_path):
-    if not table_name:
-        table_name = DEFAULT_TABLE
+    # if not table_name:
+    #     table_name = DEFAULT_TABLE
     cache = Cache(default_cache_dir)
     try:
         vectors, names = feature_extract(database_path, VGGNet())
