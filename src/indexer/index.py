@@ -7,6 +7,7 @@ def milvus_client():
     try:
         milvus = Milvus()
         status = milvus.connect(MILVUS_HOST, MILVUS_PORT)
+        print(status)
         return milvus
     except Exception as e:
         log.error(e)
@@ -56,6 +57,7 @@ def search_vectors(client, table_name, vectors, top_k):
 
 
 def has_table(client, table_name):
+    print("has table:")
     status = client.has_table(table_name=table_name)
     print("has table:",status)
     return status
