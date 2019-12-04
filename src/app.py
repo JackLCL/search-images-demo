@@ -65,6 +65,8 @@ def do_train_api():
     try:
         thread_runner(1, do_train, table_name, file_path)
         filenames = os.listdir(file_path)
+        if not os.path.exists(DATA_PATH):
+            os.mkdir(DATA_PATH)
         for filename in filenames:
             shutil.copy(file_path + '/' + filename, DATA_PATH)
         return "Start"
@@ -80,6 +82,7 @@ def do_delete_api():
     table_name = args['Table']
     print("delete table.")
     status = do_delete(table_name)
+    os.remove(DATA_PATH)
     return "{}".format(status)
 
 
