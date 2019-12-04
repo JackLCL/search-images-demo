@@ -82,7 +82,11 @@ def do_delete_api():
     table_name = args['Table']
     print("delete table.")
     status = do_delete(table_name)
-    os.removedirs(DATA_PATH)
+    print("remove", DATA_PATH)
+    try:
+        os.removedirs(DATA_PATH)
+    except:
+        print("cannot remove", DATA_PATH)
     return "{}".format(status)
 
 
@@ -92,7 +96,6 @@ def do_count_api():
         add_argument('Table', type=str). \
         parse_args()
     table_name = args['Table']
-    print("get table rows:",table_name)
     rows = do_count(table_name)
     return "{}".format(rows)
 
