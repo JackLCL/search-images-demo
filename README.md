@@ -7,7 +7,6 @@
 #### PARAM
 ||||
 |-|-|-|
-|Table|str|milvus table|
 |Num|int|top k|
 |file|file|image file|
 
@@ -17,7 +16,7 @@
 #### PARAM
 ||||
 |-|-|-|
-|Table|str|milvus table|
+|File|str|picture path|
 # Requirements
     milvus container
 
@@ -27,6 +26,19 @@
     GET
 #### PARAM
     None
+    
+### /api/v1/count 
+#### methods
+    POST
+#### PARAM
+    None
+    
+### /api/v1/delete 
+#### methods
+    POST
+#### PARAM
+    None
+     
 
 # Env
 |||
