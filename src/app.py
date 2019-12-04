@@ -82,10 +82,8 @@ def do_delete_api():
     table_name = args['Table']
     print("delete table.")
     status = do_delete(table_name)
-    print("remove", DATA_PATH)
     try:
-        import os
-        os.removedirs(DATA_PATH)
+        shutil.rmtree(DATA_PATH)
     except:
         print("cannot remove", DATA_PATH)
     return "{}".format(status)
