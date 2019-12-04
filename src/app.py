@@ -84,6 +84,7 @@ def do_delete_api():
     status = do_delete(table_name)
     print("remove", DATA_PATH)
     try:
+        import os
         os.removedirs(DATA_PATH)
     except:
         print("cannot remove", DATA_PATH)
