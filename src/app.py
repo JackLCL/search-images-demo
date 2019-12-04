@@ -82,7 +82,7 @@ def do_delete_api():
     table_name = args['Table']
     print("delete table.")
     status = do_delete(table_name)
-    os.remove(DATA_PATH)
+    os.removedirs(DATA_PATH)
     return "{}".format(status)
 
 
