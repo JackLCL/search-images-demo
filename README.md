@@ -52,4 +52,4 @@
 
 ## how to use
 
-    docker run --rm --name zilliz_search_images_demo -v /your/data/path:/tmp/images-data -p 35000:5000 -e "DATA_PATH=/tmp/images-data" -e "MILVUS_HOST=milvus-host" registry.zilliz.com/public/search-images-demo:0.1.0
+    python3 src/app.py
