@@ -10,8 +10,8 @@ from indexer.index import milvus_client, create_table, insert_vectors, delete_ta
 
 
 def do_train(table_name, database_path):
-    # if not table_name:
-    #     table_name = DEFAULT_TABLE
+    if not table_name:
+        table_name = DEFAULT_TABLE
     cache = Cache(default_cache_dir)
     try:
         vectors, names = feature_extract(database_path, VGGNet())
@@ -23,6 +23,7 @@ def do_train(table_name, database_path):
         if not ok:
             print("create table.")
             create_table(index_client, table_name=table_name)
+        print("insert into:", table_name)
         status, ids = insert_vectors(index_client, table_name, vectors)
         create_index(index_client, table_name)
         for i in range(len(names)):

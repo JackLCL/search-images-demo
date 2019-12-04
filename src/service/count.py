@@ -10,9 +10,11 @@ from indexer.index import milvus_client, create_table, insert_vectors, delete_ta
 
 
 def do_count(table_name):
-    print("trying....")
+    if not table_name:
+        table_name = DEFAULT_TABLE
     try:
         index_client = milvus_client()
+        print("get table rows:",table_name)
         num = count_table(index_client, table_name=table_name)
         return num
     except Exception as e:
