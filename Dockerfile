@@ -15,3 +15,5 @@ RUN mkdir -p /tmp/search-images
 #CMD gunicorn --bind 0.0.0.0:5000 -w 2 app:app --preload
 
 CMD python3 app.py
+
+##
