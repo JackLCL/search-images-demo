@@ -7,9 +7,9 @@
 #### PARAM
 ||||
 |-|-|-|
-|Num|int|top k|
+|Num|int|num per page|
 |file|file|image file|
-
+|Page|int|page num|
 ### /api/v1/train
 #### methods
 	POST
