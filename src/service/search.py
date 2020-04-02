@@ -15,14 +15,17 @@ def query_name_from_ids(vids):
     return res
 
 
-def do_search(table_name, img_path, top_k, model, graph, sess):
+def do_search(table_name, img_path, page, num, model, graph, sess):
     try:
         feats = []
         index_client = milvus_client()
         feat = vgg_extract_feat(img_path, model, graph, sess)
         feats.append(feat)
-        _, vectors = search_vectors(index_client, table_name, feats, top_k)
-        vids = [x.id for x in vectors[0]]
+        nums = num * (page + 1)
+        if num * page > 2048:
+            nums = 2048
+        _, vectors = search_vectors(index_client, table_name, feats, nums)
+        vids = [x.id for x in vectors[0]][nums-num:nums]
         # print(vids)
         # res = [x.decode('utf-8') for x in query_name_from_ids(vids)]
 
