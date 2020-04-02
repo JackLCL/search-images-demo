@@ -118,12 +118,14 @@ def do_search_api():
     args = reqparse.RequestParser(). \
         add_argument("Table", type=str). \
         add_argument("Num", type=int, default=1). \
+        add_argument("Page", type=int, default=0). \
         parse_args()
 
     table_name = args['Table']
     if not table_name:
         table_name = DEFAULT_TABLE
-    top_k = args['Num']
+    num = args['Num']
+    page = args['Page']
     file = request.files.get('file', "")
     if not file:
         return "no file data", 400
@@ -133,7 +135,7 @@ def do_search_api():
         filename = secure_filename(file.filename)
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(file_path)
-        res_id,res_distance = do_search(table_name, file_path, top_k, model, graph, sess)
+        res_id,res_distance = do_search(table_name, file_path, page, num, model, graph, sess)
         if isinstance(res_id, str):
             return res_id
         res_img = [request.url_root +"data/" + x for x in res_id]
